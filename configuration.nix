@@ -36,24 +36,30 @@
       ./hardware-configuration.nix
     ];
   boot.loader = {
-
     # Bootloader.
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-    # supportedFilesystems = ["zfs"];
-    # zfs.forceImportRoot = false;
+    supportedFilesystems = ["zfs"];
+    zfs.forceImportRoot = false;
   };
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  networking = {
 
-  networking.hostName = "guanbacex"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    hostName = "guanbacex"; # Define your hostname.
+    hostId = "1a27d3b4";
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+    # Enable networking
+    networkmanager.enable = true;
+
+    # Open ports in the firewall.
+    firewall.allowedTCPPorts = [ 22 ];
+  };
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -153,9 +159,6 @@
     vim
     wget
   ];
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
