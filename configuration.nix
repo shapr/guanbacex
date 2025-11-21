@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
+{emacs-overlay, ...}:
 { config, pkgs, unstable, ... }:
 
 {
@@ -35,10 +35,14 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+  boot.loader = {
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+    # Bootloader.
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    # supportedFilesystems = ["zfs"];
+    # zfs.forceImportRoot = false;
+  };
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "guanbacex"; # Define your hostname.
@@ -70,6 +74,11 @@
   };
 
   services = {
+    smartd = {
+      enable = true;
+      devices = [ {device = "/dev/sda";} {device = "/dev/sdb";} {device = "/dev/sdc";} {device = "/dev/sdd";}];
+      defaults.monitored = "-a -o on -s (S/../.././02|L/../../7/04)";
+    };
 
     avahi = {
       enable = true;

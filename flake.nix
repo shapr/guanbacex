@@ -9,7 +9,7 @@
   };
 
   outputs = { nixpkgs, unstable, emacs-overlay, ... }@inputs: {
-    nixosConfigurations.ymir = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.guanbacex = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit unstable; };
       modules = [
@@ -22,5 +22,4 @@
       ];
     };
   };
-
 }
