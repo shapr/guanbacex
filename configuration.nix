@@ -35,15 +35,17 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  boot.loader = {
-    # Bootloader.
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    supportedFilesystems = ["zfs"];
+  boot = {
+    supportedFilesystems = [ "zfs" ];
     zfs.forceImportRoot = false;
-  };
+    loader = {
+      # Bootloader.
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  kernelPackages = pkgs.linuxPackages_latest;
+};
   networking = {
 
     hostName = "guanbacex"; # Define your hostname.
