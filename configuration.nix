@@ -43,9 +43,9 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-
-  kernelPackages = pkgs.linuxPackages_latest;
-};
+    # latest kernel that supports ZFS?
+    kernelPackages = pkgs.linuxPackages_6_12;
+  };
   networking = {
 
     hostName = "guanbacex"; # Define your hostname.
@@ -155,6 +155,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    acpi
     btop
     git
     htop
