@@ -174,6 +174,7 @@
     btop
     git
     htop
+    screen
     vim
     wget
   ];
