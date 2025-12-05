@@ -42,6 +42,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  powerManagement.cpuFreqGovernor = "ondemand";
   boot = {
     supportedFilesystems = [ "zfs" ];
     zfs.forceImportRoot = false;
