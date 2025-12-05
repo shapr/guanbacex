@@ -14,6 +14,13 @@
       download-buffer-size = 500000000
     '';
     settings = {
+      system-features = [
+        "nixos-test"
+        "benchmark"
+        "big-parallel"
+        "kvm"
+        "gccarch-skylake"
+      ];
       # auto-optimise-store = true;
       cores = 16; # how many should I allow?
       trusted-users = [ "root" "shae" ];
@@ -60,7 +67,10 @@
     networkmanager.enable = true;
 
     # Open ports in the firewall.
-    firewall.allowedTCPPorts = [ 22 ];
+    firewall.allowedTCPPorts = [
+      22 # ssh
+      873 # rsyncd
+    ];
   };
 
   # Set your time zone.
@@ -82,6 +92,11 @@
   };
 
   services = {
+
+    rsyncd = {
+      enable = true;
+    };
+
     smartd = {
       enable = true;
       devices = [ {device = "/dev/sda";} {device = "/dev/sdb";} {device = "/dev/sdc";} {device = "/dev/sdd";}];
