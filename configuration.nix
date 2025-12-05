@@ -43,7 +43,7 @@
       ./hardware-configuration.nix
     ];
 
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "performance";
   boot = {
     supportedFilesystems = [ "zfs" ];
     zfs.forceImportRoot = false;
