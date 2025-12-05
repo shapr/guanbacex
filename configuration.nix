@@ -6,11 +6,11 @@
 
 {
   # AMD EPYC 4564P ?
-  nixpkgs.hostPlatform = {
-    gcc.arch = "znver4";
-    gcc.tune = "znver4";
-    system = "x86_64-linux";
-  };
+  # nixpkgs.hostPlatform = {
+  #   gcc.arch = "znver4";
+  #   gcc.tune = "znver4";
+  #   system = "x86_64-linux";
+  # };
 
   nix = {
     # https://github.com/NixOS/nix/issues/11728#issuecomment-2613076734 for download-buffer-size
@@ -27,6 +27,7 @@
         "big-parallel"
         "kvm"
         "gccarch-skylake"
+        "gccarch-znver4"
       ];
       # auto-optimise-store = true;
       cores = 16; # how many should I allow?
