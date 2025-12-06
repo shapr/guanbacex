@@ -6,11 +6,11 @@
 
 {
   # AMD EPYC 4564P ?
-  nixpkgs.hostPlatform = {
-    gcc.arch = "znver5";
-    gcc.tune = "znver5";
-    system = "x86_64-linux";
-  };
+  # nixpkgs.hostPlatform = {
+  #   gcc.arch = "znver5";
+  #   gcc.tune = "znver5";
+  #   system = "x86_64-linux";
+  # };
 
   nix = {
     # https://github.com/NixOS/nix/issues/11728#issuecomment-2613076734 for download-buffer-size
@@ -53,6 +53,7 @@
     ];
 
   powerManagement.cpuFreqGovernor = "performance";
+
   boot = {
     supportedFilesystems = [ "zfs" ];
     zfs.forceImportRoot = false;
@@ -63,7 +64,14 @@
     };
     # latest kernel that supports ZFS?
     kernelPackages = pkgs.linuxPackages_6_12;
+    initrd = {
+      network.ssh = {
+        authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
+        enable = true;
+      };
+    };
   };
+
   networking = {
 
     hostName = "guanbacex"; # Define your hostname.
@@ -166,6 +174,8 @@
     isNormalUser = true;
     description = "Shae Erisson";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
     packages = with pkgs; [
       kdePackages.kate
       #  thunderbird
