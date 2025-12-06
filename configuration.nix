@@ -6,11 +6,11 @@
 
 {
   # AMD EPYC 4564P ?
-  # nixpkgs.hostPlatform = {
-  #   gcc.arch = "znver5";
-  #   gcc.tune = "znver5";
-  #   system = "x86_64-linux";
-  # };
+  nixpkgs.hostPlatform = {
+    gcc.arch = "znver5";
+    gcc.tune = "znver5";
+    system = "x86_64-linux";
+  };
 
   nix = {
     # https://github.com/NixOS/nix/issues/11728#issuecomment-2613076734 for download-buffer-size
