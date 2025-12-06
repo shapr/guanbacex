@@ -7,8 +7,8 @@
 {
   # AMD EPYC 4564P ?
   nixpkgs.hostPlatform = {
-    gcc.arch = "znver4";
-    gcc.tune = "znver4";
+    gcc.arch = "znver5";
+    gcc.tune = "znver5";
     system = "x86_64-linux";
   };
 
