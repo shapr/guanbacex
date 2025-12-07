@@ -56,7 +56,11 @@
 
   boot = {
     supportedFilesystems = [ "zfs" ];
-    zfs.forceImportRoot = false;
+    zfs = {
+      forceImportRoot = false;
+      extraPools = [ "droplet" ];
+      devNodes = "/dev/disk/by-id";
+    };
     loader = {
       # Bootloader.
       systemd-boot.enable = true;
