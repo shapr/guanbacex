@@ -66,8 +66,8 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    # latest kernel that supports ZFS?
-    kernelPackages = pkgs.linuxPackages_6_12;
+    # latest kernel that supports ZFS? linuxPackages_6_12 works?
+    kernelPackages = pkgs.linuxPackages_latest;
     initrd = {
       network.ssh = {
         authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYlatXccSMal4uwSogKUEfJgrJ3YsH2uSbLFfgz6Vam" ];
