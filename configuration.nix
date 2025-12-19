@@ -27,8 +27,8 @@
         "big-parallel"
         "kvm"
         "gccarch-alderlake"
+        "gccarch-skylake"
         "gccarch-znver4"
-        "gccarch-znver5"
       ];
       # auto-optimise-store = true;
       cores = 16; # how many should I allow?
