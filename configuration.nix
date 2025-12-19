@@ -116,6 +116,10 @@
 
   services = {
 
+    tailscale = {
+      enable = true;
+    };
+
     rsyncd = {
       enable = true;
     };
