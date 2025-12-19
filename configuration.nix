@@ -26,7 +26,7 @@
         "benchmark"
         "big-parallel"
         "kvm"
-        "gccarch-skylake"
+        "gccarch-alderlake"
         "gccarch-znver4"
         "gccarch-znver5"
       ];
