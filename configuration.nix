@@ -29,6 +29,7 @@
         "gccarch-alderlake"
         "gccarch-skylake"
         "gccarch-znver4"
+        "gccarch-x86-64-v3"
       ];
       # auto-optimise-store = true;
       max-jobs = "auto";
