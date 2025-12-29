@@ -31,7 +31,11 @@
         "gccarch-znver4"
       ];
       # auto-optimise-store = true;
-      cores = 16; # how many should I allow?
+      max-jobs = "auto";
+      cores = 0; # how many should I allow?
+      min-free = 10 * 1024 * 1024;
+      max-free = 200 * 1024 * 1024;
+
       trusted-users = [ "root" "shae" "remotebuild" ];
       substituters = [
         "http://nix-community.cachix.org"
