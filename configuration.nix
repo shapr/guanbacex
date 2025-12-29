@@ -32,7 +32,7 @@
       ];
       # auto-optimise-store = true;
       cores = 16; # how many should I allow?
-      trusted-users = [ "root" "shae" ];
+      trusted-users = [ "root" "shae" "remotebuild" ];
       substituters = [
         "http://nix-community.cachix.org"
         "https://cache.iog.io"
@@ -189,6 +189,14 @@
       #  thunderbird
     ];
   };
+  users.users.remotebuild = {
+    isSystemUser = true;
+    group = "remotebuild";
+    useDefaultShell = true;
+    openssh.authorizedKeys.keyFiles = [ ./remotebuild.pub ];
+  };
+  users.groups.remotebuild = {};
+
 
   # Install firefox.
   # programs.firefox.enable = true;
@@ -202,11 +210,15 @@
   environment.systemPackages = with pkgs; [
     acpi
     btop
+    direnv
+    fzf
     git
     htop
     screen
+    starship
     vim
     wget
+    zoxide
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
