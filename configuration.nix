@@ -224,6 +224,7 @@
     vim
     wget
     zoxide
+    smartmontools
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
