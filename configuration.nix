@@ -6,9 +6,10 @@
 
 {
   # AMD EPYC 4564P ?
+
   # nixpkgs.hostPlatform = {
-  #   gcc.arch = "znver5";
-  #   gcc.tune = "znver5";
+  #   gcc.arch = "skylake";
+  #   gcc.tune = "skylake";
   #   system = "x86_64-linux";
   # };
 
@@ -20,6 +21,7 @@
       keep-derivations = true
       download-buffer-size = 500000000
     '';
+    nrBuildUsers = 64;
     settings = {
       system-features = [
         "nixos-test"
