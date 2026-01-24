@@ -24,15 +24,16 @@
     nrBuildUsers = 64;
     settings = {
       system-features = [
-        "nixos-test"
         "benchmark"
         "big-parallel"
-        "kvm"
         "gccarch-alderlake"
         "gccarch-skylake"
         "gccarch-skylake-avx512"
-        "gccarch-znver4"
         "gccarch-x86-64-v3"
+        "gccarch-znver3"
+        "gccarch-znver4"
+        "kvm"
+        "nixos-test"
       ];
       # auto-optimise-store = true;
       max-jobs = "auto";
@@ -220,15 +221,19 @@
     acpi
     btop
     direnv
+    dust
     fzf
     git
     htop
+    ipmitool
+    openssl
+    pciutils
     screen
+    smartmontools
     starship
     vim
     wget
     zoxide
-    smartmontools
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
