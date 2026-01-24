@@ -222,6 +222,7 @@
     btop
     direnv
     dust
+    comma
     fzf
     git
     htop
