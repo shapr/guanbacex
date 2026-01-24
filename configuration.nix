@@ -30,6 +30,7 @@
         "kvm"
         "gccarch-alderlake"
         "gccarch-skylake"
+        "gccarch-skylake-avx512"
         "gccarch-znver4"
         "gccarch-x86-64-v3"
       ];
